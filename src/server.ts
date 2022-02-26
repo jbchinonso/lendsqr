@@ -10,7 +10,8 @@ server.listen(port);
 server.on("listening", onListening);
 
 
-//connect to database
+
+
 
 
 function onListening() {

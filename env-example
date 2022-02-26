@@ -1,0 +1,9 @@
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=lendsqr
+DB_PASSWORD=password
+DB_NANE=lendsqr
+
+npx knex migrate:make init --migrations-directory src/migrations
+
+ npx knex migrate:latest --knexfile knexfile.js 
