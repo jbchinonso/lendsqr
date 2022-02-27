@@ -1,4 +1,4 @@
-import knex from "../db";
+import knex from "../database/db";
 import bcrypt from "bcrypt";
 import { Iaccount, Iuser, Itransaction, ItransferObj } from "..";
 
@@ -20,21 +20,24 @@ class UserService {
         last_name,
         email,
         password: hashedPass,
-      });
+      }).select("id");
     } catch (error: any) {
       throw new Error(error.message);
     }
   }
 
-  static async createAccount(userId: number) {
+  static async createAccount(userId: string) {
     const code = "002";
     const accountNumber = code + Math.random().toString().substr(2, 7);
 
     try {
+ 
       await knex("accounts").insert({
         user_id: userId,
         account_number: accountNumber,
       });
+
+
 
       return accountNumber;
     } catch (error: any) {

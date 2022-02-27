@@ -1,5 +1,4 @@
 import express from "express";
-import http from "http";
 import indexRouter from "./routes/index";
 import userRouter from "./routes/users"
 const app = express();

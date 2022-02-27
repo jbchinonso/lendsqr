@@ -1,4 +1,4 @@
-
+import path from "path"
 import dotenv from "dotenv"
 dotenv.config();
 /**
@@ -23,23 +23,17 @@ const config = {
     },
   },
 
-  production: {
-    client: "mysql",
+  test: {
+    client: "sqlite3",
     connection: {
-      host: "localhost",
-      port: 3306,
-      user: "lendsqr",
-      password: "password",
-      database: "lendsqr",
-    },
-    pool: {
-      min: 2,
-      max: 10,
+      filename: path.join(__dirname, "testdb.sqlite3"),
     },
     migrations: {
       tableName: "knex_migrations",
     },
+    useNullAsDefault: true,
   },
 };
+
 
 export default config;

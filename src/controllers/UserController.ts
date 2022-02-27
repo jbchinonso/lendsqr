@@ -14,7 +14,9 @@ class UserController {
 
       const userId = (await UserService.createUser(
         value
-      )) as unknown[] as number[];
+      )) as unknown[] as string[];
+
+      console.log(userId)
 
       const accountNumber = await UserService.createAccount(userId[0]);
 
@@ -76,8 +78,10 @@ class UserController {
 
           const receiver = await UserService.accountDetail(beneficiary);
 
-          const [receiverDetail] = receiver;
-          
+        const [receiverDetail] = receiver;
+        
+        if (!receiverDetail) throw new Error("invalid beneficiary")
+
           const transferPaymentOBj = {
             user_id,
             account_number,
